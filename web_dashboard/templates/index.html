@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentinel Vision Dashboard</title>
+    <link rel="icon" href="logo.jpg">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/heatmap.js/2.0.2/heatmap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="logo-section">
+                <div class="logo-frame">
+                    <img src="{{ url_for('static', filename='image/logo.jpg') }}" alt="Sentinel Vision" class="logo-img">
+                </div>
+                <h2>Sentinel Vision</h2>
+                <p class="subtitle">Women Safety Dashboard</p>
+            </div>
+            <div class="menu-options">
+                <button class="menu-btn active">
+                    <i class="fas fa-video"></i>
+                    Camera View
+                </button>
+                <button class="menu-btn">
+                    <i class="fas fa-map"></i>
+                    Heat Map
+                </button>
+                <button class="menu-btn">
+                    <i class="fas fa-history"></i>
+                    Recent History
+                </button>
+            </div>
+            <div class="safety-message">
+                <div class="status-indicator">System Active</div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="camera-grid" id="cameraView">
+                <div class="camera-feed">
+                    <div class="camera-header">
+                        <h3>Camera 1</h3>
+                    </div>
+                    <div class="video-container">
+                        <img src="/video_feed" id="liveFeed1" class="live-feed" alt="Camera 1 stream not available">
+                    </div>
+                </div>
+                <div class="camera-feed">
+                    <div class="camera-header">
+                        <h3>Camera 2</h3>
+                    </div>
+                    <div class="video-container">
+                        <img src="#" id="liveFeed2" class="live-feed" alt="Camera 2 stream not available">
+                    </div>
+                </div>
+                <div class="camera-feed">
+                    <div class="camera-header">
+                        <h3>Camera 3</h3>
+                    </div>
+                    <div class="video-container">
+                        <img src="#" id="liveFeed3" class="live-feed" alt="Camera 3 stream not available">
+                    </div>
+                </div>
+                <div class="camera-feed">
+                    <div class="camera-header">
+                        <h3>Camera 4</h3>
+                    </div>
+                    <div class="video-container">
+                        <img src="#" id="liveFeed4" class="live-feed" alt="Camera 4 stream not available">
+                    </div>
+                </div>
+            </div>
+
+            <div class="heatmap-container" id="heatmapView" style="display: none;">
+                <div class="section-header">
+                    <h2>Area Heat Map Analysis</h2>
+                    <p class="subtitle">Real-time activity monitoring</p>
+                </div>
+                <div class="heatmap-content">
+                    <div class="heatmap-area" id="heatmap"></div>
+                </div>
+                <div class="heatmap-legend">
+                    <span class="legend-item low">Low Activity</span>
+                    <span class="legend-item medium">Medium Activity</span>
+                    <span class="legend-item high">High Activity</span>
+                </div>
+            </div>
+
+            <div class="history-container" id="historyView" style="display: none;">
+                <div class="history-filters">
+                    <select id="cameraFilter">
+                        <option value="all">All Cameras</option>
+                        <option value="1">Camera 1</option>
+                        <option value="2">Camera 2</option>
+                        <option value="3">Camera 3</option>
+                        <option value="4">Camera 4</option>
+                    </select>
+                    <input type="date" id="dateFilter">
+                </div>
+                <div class="history-content">
+                    <table id="historyTable">
+                        <thead>
+                            <tr>
+                                <th>Camera</th>
+                                <th>Event Type</th>
+                                <th>Date & Time</th>
+                                <th>Location</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="status-table">
+                <div class="section-header">
+                    <h2>System Status</h2>
+                    <p class="subtitle">Real-time monitoring status</p>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Camera</th>
+                            <th>Status</th>
+                            <th>Issue</th>
+                            <th>Last Updated</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Camera 1</td>
+                            <td class="status-active" style="color: green;">Active</td>
+                            <td>None</td>
+                            <td class="timestamp">Just now</td>
+                        </tr>
+                        <tr>
+                            <td>Camera 2</td>
+                            <td class="status-active" style="color: red;">Inactive</td>
+                            <td>Camera not found</td>
+                            <td class="timestamp">Just now</td>
+                        </tr>
+                        <tr>
+                            <td>Camera 3</td>
+                            <td class="status-active" style="color: red;">Inactive</td>
+                            <td>Camera not found</td>
+                            <td class="timestamp">Just now</td>
+                        </tr>
+                        <tr>
+                            <td>Camera 4</td>
+                            <td class="status-active" style="color: red;">Inactive</td>
+                            <td>Camera not found</td>
+                            <td class="timestamp">Just now</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="tagline">
+                <p>"She Moves Free, We Watch Over"</p>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script>
+        // Function to check for alerts periodically
+        function checkForAlerts() {
+            fetch('/check_alert')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.redirect) {
+                        // Redirect to the welcome page which serves index1.html
+                        window.location.href = data.url;
+                    }
+                })
+                .catch(error => console.error('Error checking for alerts:', error));
+        }
+    
+        // Check for alerts every 2 seconds
+        setInterval(checkForAlerts, 2000);
+    </script>
+</body>
+</html>

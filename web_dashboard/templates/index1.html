@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emergency Alert System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles1.css') }}">   
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="alert-container">
+        <div class="alert-header">
+            <div class="alert-circle">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span>EMERGENCY ALERT</span>
+            </div>
+        </div>
+        
+        <div class="alert-content">
+            <div class="video-section">
+                <h2>Video Link:</h2>
+   <a href="{{  link  }}">Click Here</a>
+                 <h2>Location Link:</h2>
+    <a href="{{ location }}">Click Here</a>          
+                </div>
+            </div>
+            
+            <div class="location-section">
+                <h2>Location:</h2>
+                <div class="location-details">
+                    <div class="location-box" id="alertLocation">Loading...</div>
+                    <div class="camera-info" id="cameraInfo">Camera ID: Loading...</div>
+                    <div class="timestamp" id="alertTime">Time: Loading...</div>
+                </div>
+            </div>
+            
+            <div class="action-buttons">
+                <button class="action-btn dispatch" onclick="showDispatchDialog()">
+                    <i class="fas fa-ambulance"></i>
+                    Dispatch Emergency Team
+                </button>
+                <button class="action-btn dismiss" onclick="dismissAlert()">
+                    <i class="fas fa-times"></i>
+                    Dismiss Alert
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Authentication Dialog -->
+    <div id="dispatchDialog" class="dispatch-dialog">
+        <div class="dispatch-content">
+            <h3>Authentication Required</h3>
+            <p>Enter dispatch authorization code:</p>
+            <div class="input-group">
+                <input type="password" id="dispatchPassword" placeholder="Enter security code">
+                <span class="error-message" id="passwordError"></span>
+            </div>
+            <div class="dialog-buttons">
+                <button class="confirm-btn" onclick="verifyAndDispatch()">Confirm Dispatch</button>
+                <button class="cancel-btn" onclick="closeDispatchDialog()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script1.js') }}"></script>
+</body>
+</html>
