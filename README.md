@@ -1,6 +1,6 @@
 # 🛡️ Women Safety Web Dashboard
 
-This is the web-based dashboard component of the **Women Safety Surveillance System**. It provides real-time monitoring, threat detection notifications, and control features through a clean and responsive web interface.
+This is the web-based dashboard component of the **Women Safety Surveillance System**. It provides real-time monitoring, threat detection notifications, Generate SOS SMS and send to desired receiver and control features through a clean and responsive web interface.
 
 ---
 
@@ -10,7 +10,7 @@ This is the web-based dashboard component of the **Women Safety Surveillance Sys
 - 📍 Real-time detection overlays (gender, gesture, violence)
 - 📈 Dashboard with incident history and status insights
 - ⚠️ Threat alert popups and device connectivity indicators
-- 💬 Optional SOS alert log view (if integrated with backend)
+- 💬 Auto SOS alert to desired receiver
 
 ---
 ## keys.py file setup
