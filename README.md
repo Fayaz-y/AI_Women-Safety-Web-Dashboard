@@ -15,11 +15,11 @@ This is the web-based dashboard component of the **Women Safety Surveillance Sys
 ---
 ## keys.py file setup
 - stucture :
-   account_sid = "twilio_sid" 
-   account_token = "twilio_token" 
-   twilio_number = "+twilio_no" 
-   my_phone_number = "+your_ph_no"
-   dropbox_access_token = "put_generated_token"
+  - account_sid = "twilio_sid" 
+  - account_token = "twilio_token" 
+  - twilio_number = "+twilio_no" 
+  - my_phone_number = "+your_ph_no"
+  - dropbox_access_token = "put_generated_token"
   
 ## 💻 Development Setup (VS Code)
 
