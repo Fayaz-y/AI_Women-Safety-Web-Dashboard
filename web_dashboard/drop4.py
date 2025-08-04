@@ -11,7 +11,7 @@ import os
 def send_alert_to_server(name):
     try:
         # Make sure this IP matches your server IP
-        response = requests.post("http://your_ip:5000/alert", json={"name": name}) # change your_ip to device ip address -------------
+        response = requests.post("http://your_ip:5000/alert", json={"name": name}) # change your_ip to device ip address 
         if response.status_code == 200:
             print(f"✅ Alert sent with name: {name}")
             print("The server will redirect any open browser sessions to index1.html")
@@ -27,7 +27,7 @@ dbx = dropbox.Dropbox(keys.dropbox_access_token)
 # Generate filename with timestamp
 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 video_filename = f"captured_video_{timestamp}.mp4"
-video_path = os.path.join("D:/web_dashboard/static/video", video_filename) # declare proper path to save video -----------------------
+video_path = os.path.join("D:/web_dashboard/static/video", video_filename) # declare proper path to save video
 
 dropbox_path = f"/videos/{video_filename}"
 
