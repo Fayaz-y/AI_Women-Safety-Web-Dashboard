@@ -52,7 +52,7 @@ def video_feed():
 # Welcome page - renders index1.html
 @app.route('/welcome')
 def welcome():
-    playsound(r"alarm_audio_path") # Declare alarm file path ------------------------------------------------------------------
+    playsound(r"alarm_audio_path") # Declare alarm file path 
     return render_template('index1.html',link=alert_name,location=loc)
 
 from flask import send_from_directory
@@ -87,4 +87,4 @@ def check_alert():
     return {"redirect": False}, 200
 
 if __name__ == '__main__':
-    app.run(host='your_ip', port=5000, debug=False) # change your_ip to device ip address ----------------------------------------
+    app.run(host='your_ip', port=5000, debug=False) # change your_ip to device ip address 
