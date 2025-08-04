@@ -4,7 +4,7 @@ import webbrowser
 def send_alert_to_server(name="Fayaz"):
     try:
         # Make sure this IP address matches your Flask app's host
-        server_url = "http://your_ip:5000/alert:5000" # change your_ip to device ip address -------------
+        server_url = "http://your_ip:5000/alert:5000" # change your_ip to device ip address
         
         # Send the alert to the server
         response = requests.post(f"{server_url}/alert", json={"name": name}, allow_redirects=False)
